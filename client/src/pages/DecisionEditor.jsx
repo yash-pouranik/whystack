@@ -1,17 +1,28 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { api } from '../services/api';
-import { ArrowLeft, Save, Loader2, FileText } from 'lucide-react';
-import { Button, Input, Textarea, Card, CardContent } from '../components/id-ui';
+import { ArrowLeft, Save, Check } from 'lucide-react';
 
+/**
+ * DecisionEditor - Clean, modern editor
+ * 
+ * Features:
+ * - Large textareas with placeholders
+ * - Auto-save indicator
+ * - Clean layout
+ */
 export default function DecisionEditor() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({
-        what: '', why: '', optionsConsidered: '', tradeoffs: ''
+    const [decision, setDecision] = useState({
+        what: '',
+        why: '',
+        optionsConsidered: '',
+        tradeoffs: ''
     });
-    const [saving, setSaving] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [saving, setSaving] = useState(false);
+    const [saved, setSaved] = useState(false);
 
     useEffect(() => {
         loadData();
@@ -19,128 +30,137 @@ export default function DecisionEditor() {
 
     const loadData = async () => {
         try {
-            const decision = await api.getDecision(id);
-            if (decision) {
-                setFormData({
-                    what: decision.what,
-                    why: decision.why,
-                    optionsConsidered: decision.optionsConsidered || '',
-                    tradeoffs: decision.tradeoffs || ''
+            const decisionData = await api.getDecision(id);
+            if (decisionData) {
+                setDecision({
+                    what: decisionData.what || '',
+                    why: decisionData.why || '',
+                    optionsConsidered: decisionData.optionsConsidered || '',
+                    tradeoffs: decisionData.tradeoffs || ''
                 });
             }
-        } catch (e) {
-            console.log('Creating new...');
+        } catch (error) {
+            console.error('Failed to load decision:', error);
         } finally {
             setLoading(false);
         }
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSave = async () => {
         setSaving(true);
+        setSaved(false);
         try {
-            await api.saveDecision(id, formData);
-            navigate(-1);
-        } catch (e) {
-            alert("Failed to save");
+            await api.saveDecision(id, decision);
+            setSaved(true);
+            setTimeout(() => setSaved(false), 3000);
+        } catch (error) {
+            console.error('Failed to save:', error);
+            alert('Failed to save decision');
         } finally {
             setSaving(false);
         }
     };
 
-    if (loading) return <div className="flex justify-center py-20"><Loader2 className="animate-spin text-zinc-500" /></div>;
+    const handleChange = (field, value) => {
+        setDecision(prev => ({ ...prev, [field]: value }));
+    };
+
+    if (loading) {
+        return (
+            <div className="max-w-4xl mx-auto py-12 px-6">
+                <div className="text-secondary">Loading...</div>
+            </div>
+        );
+    }
 
     return (
-        <div className="max-w-3xl mx-auto pb-20">
-            <Link
-                to="#"
-                onClick={(e) => { e.preventDefault(); navigate(-1); }} // Go back safely
-                className="inline-flex items-center gap-2 text-zinc-500 hover:text-white mb-6 transition"
-            >
-                <ArrowLeft size={16} /> Back
-            </Link>
+        <div className="max-w-4xl mx-auto py-8 px-6">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-8 pb-6 border-b border-subtle">
+                <button
+                    onClick={() => navigate(-1)}
+                    className="flex items-center gap-2 text-secondary hover:text-primary transition-colors"
+                >
+                    <ArrowLeft size={18} />
+                    <span>Back to PRs</span>
+                </button>
 
-            <header className="mb-8 pb-6 border-b border-border flex justify-between items-start">
+                <div className="flex items-center gap-3">
+                    {saved && (
+                        <span className="flex items-center gap-2 text-sm status-documented">
+                            <Check size={16} />
+                            Saved
+                        </span>
+                    )}
+                    <button
+                        onClick={handleSave}
+                        disabled={saving}
+                        className="btn-primary flex items-center gap-2"
+                    >
+                        <Save size={16} />
+                        {saving ? 'Saving...' : 'Save Decision'}
+                    </button>
+                </div>
+            </div>
+
+            {/* Editor */}
+            <div className="space-y-6">
+                {/* What */}
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight mb-2">Decision Record</h1>
-                    <div className="text-zinc-400 font-mono flex items-center gap-2">
-                        <FileText size={16} />
-                        PR #{id}
-                    </div>
+                    <label className="block text-sm font-medium text-primary mb-2">
+                        What was decided?
+                    </label>
+                    <textarea
+                        value={decision.what}
+                        onChange={(e) => handleChange('what', e.target.value)}
+                        placeholder="Describe the decision made in this PR..."
+                        className="w-full bg-elevated border border-subtle rounded-lg p-4 text-primary placeholder-tertiary focus:outline-none focus:border-[var(--brand-primary)] resize-none transition-colors"
+                        rows={3}
+                    />
                 </div>
 
-                <Button onClick={handleSubmit} disabled={saving} className="gap-2 shadow-lg shadow-primary/20">
-                    {saving ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />}
-                    Save Record
-                </Button>
-            </header>
-
-            <form onSubmit={handleSubmit} className="space-y-8">
-                <Section
-                    label="What is changing?"
-                    help="Brief summary of the architectural or logical change."
-                >
-                    <Input
-                        value={formData.what}
-                        onChange={e => setFormData({ ...formData, what: e.target.value })}
-                        placeholder="e.g., Switching from Polling to Webhooks"
-                        required
-                        className="font-medium"
+                {/* Why */}
+                <div>
+                    <label className="block text-sm font-medium text-primary mb-2">
+                        Why was this decision made?
+                    </label>
+                    <textarea
+                        value={decision.why}
+                        onChange={(e) => handleChange('why', e.target.value)}
+                        placeholder="Explain the reasoning, context, and motivation behind this decision..."
+                        className="w-full bg-elevated border border-subtle rounded-lg p-4 text-primary placeholder-tertiary focus:outline-none focus:border-[var(--brand-primary)] resize-none transition-colors"
+                        rows={6}
                     />
-                </Section>
-
-                <Section
-                    label="The WHY"
-                    help="The core reasoning. Why this approach? Why now?"
-                    required
-                >
-                    <Textarea
-                        value={formData.why}
-                        onChange={e => setFormData({ ...formData, why: e.target.value })}
-                        placeholder="Reviewing the latency logs revealed that..."
-                        required
-                        className="min-h-[150px]"
-                    />
-                </Section>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <Section
-                        label="Options Considered"
-                        help="Alternatives rejected"
-                    >
-                        <Textarea
-                            value={formData.optionsConsidered}
-                            onChange={e => setFormData({ ...formData, optionsConsidered: e.target.value })}
-                            placeholder="- Websockets (too complex)"
-                            className="min-h-[120px]"
-                        />
-                    </Section>
-
-                    <Section
-                        label="Tradeoffs & Risks"
-                        help="Downsides of this choice"
-                    >
-                        <Textarea
-                            value={formData.tradeoffs}
-                            onChange={e => setFormData({ ...formData, tradeoffs: e.target.value })}
-                            placeholder="Increased memory usage on server..."
-                            className="min-h-[120px]"
-                        />
-                    </Section>
                 </div>
-            </form>
+
+                {/* Options Considered */}
+                <div>
+                    <label className="block text-sm font-medium text-primary mb-2">
+                        What alternatives were considered?
+                    </label>
+                    <textarea
+                        value={decision.optionsConsidered}
+                        onChange={(e) => handleChange('optionsConsidered', e.target.value)}
+                        placeholder="List other approaches that were evaluated and why they weren't chosen..."
+                        className="w-full bg-elevated border border-subtle rounded-lg p-4 text-primary placeholder-tertiary focus:outline-none focus:border-[var(--brand-primary)] resize-none transition-colors"
+                        rows={5}
+                    />
+                </div>
+
+                {/* Tradeoffs */}
+                <div>
+                    <label className="block text-sm font-medium text-primary mb-2">
+                        What are the tradeoffs?
+                    </label>
+                    <textarea
+                        value={decision.tradeoffs}
+                        onChange={(e) => handleChange('tradeoffs', e.target.value)}
+                        placeholder="Document the pros, cons, and compromises of this decision..."
+                        className="w-full bg-elevated border border-subtle rounded-lg p-4 text-primary placeholder-tertiary focus:outline-none focus:border-[var(--brand-primary)] resize-none transition-colors"
+                        rows={5}
+                    />
+                </div>
+            </div>
         </div>
     );
-}
-
-function Section({ label, help, children, required }) {
-    return (
-        <div className="group">
-            <label className="block text-lg font-bold text-zinc-200 mb-1 flex items-baseline gap-1">
-                {label} {required && <span className="text-primary text-sm">*</span>}
-            </label>
-            <p className="text-sm text-zinc-500 mb-3 group-focus-within:text-zinc-400 transition-colors">{help}</p>
-            {children}
-        </div>
-    )
 }

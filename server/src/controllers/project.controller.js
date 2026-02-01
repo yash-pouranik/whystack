@@ -4,17 +4,22 @@ const User = require('../models/User');
 const PullRequest = require('../models/PullRequest'); // Added dependency
 
 // ... existing listRepos and importRepo ...
+const { decrypt } = require('../utils/crypto');
+
 // List repositories from GitHub for the authenticated user
 exports.listRepos = async (req, res) => {
     try {
         const user = await User.findById(req.userId);
         if (!user) return res.status(401).json({ message: 'Unauthorized' });
 
+        // Decrypt token
+        const accessToken = decrypt(user.accessToken);
+
         // Fetch repos from GitHub
         // Using simple pagination parameters or fetching first 100 for MVP
         const githubRes = await axios.get('https://api.github.com/user/repos?per_page=100&sort=updated', {
             headers: {
-                Authorization: `Bearer ${user.accessToken}`,
+                Authorization: `Bearer ${accessToken}`,
                 Accept: 'application/vnd.github.v3+json'
             }
         });
@@ -70,6 +75,43 @@ exports.importRepo = async (req, res) => {
         });
 
         await project.save();
+
+        // --- NEW: Sync PRs immediately (SRS 7.1) ---
+        // Decrypt token for use
+        const { decrypt } = require('../utils/crypto');
+        const accessToken = decrypt(user.accessToken);
+
+        try {
+            // Fetch ~30 PRs (GitHub default limit is 30, max 100)
+            const prRes = await axios.get(`https://api.github.com/repos/${owner}/${name}/pulls?state=all&per_page=30`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    Accept: 'application/vnd.github.v3+json'
+                }
+            });
+
+            const prs = prRes.data.map(pr => ({
+                project: project._id,
+                githubPrNumber: pr.number,
+                title: pr.title,
+                author: pr.user.login,
+                status: pr.state === 'closed' ? (pr.merged_at ? 'MERGED' : 'CLOSED') : 'OPEN',
+                githubCreatedAt: pr.created_at,
+                githubUpdatedAt: pr.updated_at,
+                githubClosedAt: pr.closed_at,
+                githubMergedAt: pr.merged_at
+            }));
+
+            if (prs.length > 0) {
+                // Use ordered: false to continue if some duplicates exist (though this is new project)
+                await PullRequest.insertMany(prs, { ordered: false });
+                console.log(`Synced ${prs.length} PRs for ${name}`);
+            }
+        } catch (syncError) {
+            console.error('Initial PR Sync Failed (Non-fatal):', syncError.message);
+            // Don't fail the request, just log it. Background job would retry in real app.
+        }
+
         res.status(201).json(project);
     } catch (error) {
         console.error('Import Repo Error:', error.message);

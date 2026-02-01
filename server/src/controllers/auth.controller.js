@@ -42,15 +42,19 @@ exports.callback = async (req, res) => {
         // Upsert User
         let user = await User.findOne({ githubId: userData.id.toString() });
 
+        // Encrypt the token
+        const { encrypt } = require('../utils/crypto');
+        const encryptedToken = encrypt(accessToken);
+
         if (!user) {
             user = new User({
                 githubId: userData.id.toString(),
                 username: userData.login,
                 avatarUrl: userData.avatar_url,
-                accessToken,
+                accessToken: encryptedToken,
             });
         } else {
-            user.accessToken = accessToken; // Update token
+            user.accessToken = encryptedToken; // Update token
             user.username = userData.login; // Update username if changed
             user.avatarUrl = userData.avatar_url;
         }

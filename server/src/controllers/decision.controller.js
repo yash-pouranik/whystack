@@ -53,12 +53,25 @@ exports.createOrUpdateDecision = async (req, res) => {
 
         if (decision) {
             // Update
+            // 1. Push current state to history (FR-11)
+            decision.history.push({
+                what: decision.what,
+                why: decision.why,
+                optionsConsidered: decision.optionsConsidered,
+                tradeoffs: decision.tradeoffs,
+                author: decision.author,
+                version: decision.version,
+                timestamp: decision.updatedAt
+            });
+
+            // 2. Set new values
             decision.what = what;
             decision.why = why;
             decision.optionsConsidered = optionsConsidered;
             decision.tradeoffs = tradeoffs;
             decision.version += 1; // Increment version
             decision.updatedAt = Date.now();
+            decision.author = user.username; // Update author to last editor? SRS implies audit trail
             // Ensure status is documented
             decision.status = 'DOCUMENTED';
         } else {

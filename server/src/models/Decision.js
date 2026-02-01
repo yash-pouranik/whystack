@@ -41,7 +41,17 @@ const decisionSchema = new mongoose.Schema({
     updatedAt: {
         type: Date,
         default: Date.now
-    }
+    },
+    // History Tracking (FR-11)
+    history: [{
+        what: String,
+        why: String,
+        optionsConsidered: String,
+        tradeoffs: String,
+        author: String,
+        version: Number,
+        timestamp: { type: Date, default: Date.now }
+    }]
 });
 
 // Search indexes

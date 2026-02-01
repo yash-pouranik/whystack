@@ -7,20 +7,41 @@ export default {
     theme: {
         extend: {
             colors: {
-                background: '#09090b', // Zinc 950
-                card: '#18181b', // Zinc 900
-                border: '#27272a', // Zinc 800
-                primary: {
-                    DEFAULT: '#f472b6', // Pink 400
-                    hover: '#f9a8d4', // Pink 300
-                    foreground: '#000000'
+                // Backgrounds (mapping bg-primary to the dark background, NOT brand color)
+                primary: 'var(--bg-primary)',
+                surface: 'var(--bg-surface)',
+                elevated: 'var(--bg-elevated)',
+                hover: 'var(--bg-hover)',
+
+                // Brand Colors (Blue)
+                brand: {
+                    DEFAULT: 'var(--brand-primary)', // This is the blue
+                    hover: 'var(--brand-primary-hover)',
+                    text: 'var(--brand-primary)',
                 },
-                secondary: '#27272a', // Zinc 800
-                muted: '#71717a', // Zinc 500
-                text: '#f4f4f5', // Zinc 100
+
+                // Text
+                text: {
+                    primary: 'var(--text-primary)',
+                    secondary: 'var(--text-secondary)',
+                    tertiary: 'var(--text-tertiary)',
+                },
+
+                // Borders
+                border: {
+                    DEFAULT: 'var(--border-default)',
+                    subtle: 'var(--border-subtle)',
+                },
+
+                // Status
+                status: {
+                    pending: 'var(--status-pending)',
+                    documented: 'var(--status-documented)',
+                    risk: 'var(--status-risk)',
+                }
             },
             fontFamily: {
-                sans: ['Inter', 'system-ui', 'sans-serif'],
+                sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
             }
         },
     },
