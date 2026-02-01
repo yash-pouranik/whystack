@@ -37,7 +37,7 @@ exports.createOrUpdateDecision = async (req, res) => {
     const { pullRequestId } = req.params;
 
     try {
-        const user = await User.findById(req.session.userId);
+        const user = await User.findById(req.userId);
         if (!user) return res.status(401).json({ message: 'Unauthorized' });
 
         const pr = await PullRequest.findById(pullRequestId).populate('project');

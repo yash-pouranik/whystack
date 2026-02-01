@@ -1,5 +1,6 @@
 const axios = require('axios');
 const User = require('../models/User');
+const { generateToken } = require('../middleware/auth.middleware');
 
 exports.login = (req, res) => {
     const redirectUri = `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&redirect_uri=${process.env.GITHUB_CALLBACK_URL}&scope=repo,user`;
@@ -56,11 +57,14 @@ exports.callback = async (req, res) => {
 
         await user.save();
 
-        // Set Session
-        req.session.userId = user._id;
+        // Generate JWT token
+        const token = generateToken(user._id);
+        console.log('✅ JWT token generated for user:', user.username);
 
-        // Redirect to frontend (or home for now)
-        res.redirect(process.env.CLIENT_URL || '/');
+        // Redirect to frontend with token in URL
+        const redirectUrl = `${process.env.CLIENT_URL || 'http://localhost:5173'}/auth/callback?token=${token}`;
+        console.log('🔄 Redirecting to:', redirectUrl);
+        res.redirect(redirectUrl);
     } catch (error) {
         console.error('Auth Error:', error.message);
         res.status(500).send('Internal Server Error during Auth');
@@ -68,17 +72,24 @@ exports.callback = async (req, res) => {
 };
 
 exports.logout = (req, res) => {
-    req.session = null;
-    res.redirect('/');
+    // No server-side action needed for JWT
+    // Token is cleared client-side
+    console.log('🚪 Logout requested (JWT - client-side clear)');
+    res.redirect(process.env.CLIENT_URL || 'http://localhost:5173/login');
 };
 
 exports.getCurrentUser = async (req, res) => {
-    if (!req.session.userId) {
-        return res.status(401).json({ message: 'Not authenticated' });
-    }
     try {
-        const user = await User.findById(req.session.userId);
-        res.json(user);
+        // req.userId is set by auth middleware
+        const user = await User.findById(req.userId).select('-accessToken');
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json({
+            id: user._id,
+            username: user.username,
+            avatarUrl: user.avatarUrl
+        });
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }
@@ -91,23 +102,23 @@ exports.devLogin = async (req, res) => {
 
     try {
         // Find existing or create dummy user
-        // We use a dummy ID like 'dev-123'
         let user = await User.findOne({ username, githubId: { $regex: /^dev-/ } });
 
         if (!user) {
             user = new User({
                 githubId: `dev-${Math.floor(Math.random() * 100000)}`,
-                username: username,
-                avatarUrl: 'https://via.placeholder.com/150',
-                accessToken: 'dev-token-placeholder', // Won't work for real GitHub calls
+                username,
+                avatarUrl: `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`,
+                accessToken: 'dev-token'
             });
             await user.save();
         }
 
-        req.session.userId = user._id;
-        res.json({ message: 'Dev login successful', user });
+        // Generate JWT token
+        const token = generateToken(user._id);
+        res.json({ token, user: { id: user._id, username: user.username } });
     } catch (error) {
-        console.error('Dev Auth Error:', error);
-        res.status(500).send('Dev Auth Failed');
+        console.error('Dev Login Error:', error);
+        res.status(500).send('Error during dev login');
     }
 };

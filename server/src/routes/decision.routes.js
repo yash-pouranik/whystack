@@ -1,16 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const decisionController = require('../controllers/decision.controller');
+const { authenticateToken } = require('../middleware/auth.middleware');
 
-// Middleware
-const requireAuth = (req, res, next) => {
-    if (!req.session.userId) {
-        return res.status(401).json({ message: 'Authentication required' });
-    }
-    next();
-};
-
-router.use(requireAuth);
+// All routes require JWT authentication
+router.use(authenticateToken);
 
 router.post('/:pullRequestId', decisionController.createOrUpdateDecision);
 router.get('/:pullRequestId', decisionController.getDecisionByPR);

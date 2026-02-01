@@ -1,6 +1,4 @@
-import { api } from '../services/api';
 import { Github } from 'lucide-react';
-import { Button, Card } from '../components/id-ui';
 
 export default function Login() {
     return (
@@ -19,14 +17,14 @@ export default function Login() {
                     </p>
                 </div>
 
-                <Button
-                    onClick={api.login}
-                    size="lg"
-                    className="h-14 px-8 text-lg gap-3 shadow-xl shadow-primary/20 hover:scale-105 transition-all duration-200"
+                {/* Direct link instead of button with onClick */}
+                <a
+                    href="http://localhost:5000/auth/github"
+                    className="inline-flex items-center justify-center gap-3 h-14 px-8 text-lg font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary-hover shadow-xl shadow-primary/20 hover:scale-105 transition-all duration-200"
                 >
                     <Github size={24} />
                     Continue with GitHub
-                </Button>
+                </a>
 
                 <p className="text-xs text-zinc-600">
                     By continuing, you agree to track your decisions responsibly.

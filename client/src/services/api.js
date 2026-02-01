@@ -1,4 +1,21 @@
-const API_URL = 'http://localhost:5000';
+const API_URL = ''; // Use proxy - same origin
+
+// Token management
+const TOKEN_KEY = 'whystack_token';
+
+const getToken = () => localStorage.getItem(TOKEN_KEY);
+const setToken = (token) => localStorage.setItem(TOKEN_KEY, token);
+const clearToken = () => localStorage.removeItem(TOKEN_KEY);
+
+// Helper to add Authorization header
+const getHeaders = () => {
+    const headers = { 'Content-Type': 'application/json' };
+    const token = getToken();
+    if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+    }
+    return headers;
+};
 
 export const api = {
     // Auth
@@ -7,14 +24,29 @@ export const api = {
     },
 
     getMe: async () => {
-        const res = await fetch(`${API_URL}/auth/me`);
+        const res = await fetch(`${API_URL}/auth/me`, {
+            headers: getHeaders()
+        });
         if (!res.ok) throw new Error('Not authenticated');
         return res.json();
     },
 
+    logout: () => {
+        console.log('🚪 Logging out - clearing token');
+        clearToken();
+        window.location.href = '/login';
+    },
+
+    // Token helpers
+    setToken,
+    getToken,
+    clearToken,
+
     // Projects
     getProjects: async () => {
-        const res = await fetch(`${API_URL}/projects`);
+        const res = await fetch(`${API_URL}/projects`, {
+            headers: getHeaders()
+        });
         if (!res.ok) throw new Error('Failed to fetch projects');
         return res.json();
     },
@@ -22,7 +54,7 @@ export const api = {
     importProject: async (data) => {
         const res = await fetch(`${API_URL}/projects/import`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: getHeaders(),
             body: JSON.stringify(data)
         });
         if (!res.ok) throw new Error('Failed to import');
@@ -30,20 +62,17 @@ export const api = {
     },
 
     // PRs
-    // Note: We don't have a direct "get PRs by project" endpoint in the original plan?!
-    // Wait, SRS says: "List PRs per project" in "API ENDPOINTS (MINIMUM)".
-    // But my server implementation only has `webhook` and `decision` endpoints?
-    // Checking server controllers... 
-    // Ah, I might have missed explicitly creating `GET /projects/:id/prs`.
-    // I will check this in a moment. For now assume it exists or I will add it.
-
     getPRs: async (projectId) => {
-        const res = await fetch(`${API_URL}/projects/${projectId}/prs`);
+        const res = await fetch(`${API_URL}/projects/${projectId}/prs`, {
+            headers: getHeaders()
+        });
         return res.json();
     },
 
     getDecision: async (prId) => {
-        const res = await fetch(`${API_URL}/decisions/${prId}`);
+        const res = await fetch(`${API_URL}/decisions/${prId}`, {
+            headers: getHeaders()
+        });
         if (res.status === 404) return null;
         return res.json();
     },
@@ -51,7 +80,7 @@ export const api = {
     saveDecision: async (prId, data) => {
         const res = await fetch(`${API_URL}/decisions/${prId}`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: getHeaders(),
             body: JSON.stringify(data)
         });
         return res.json();

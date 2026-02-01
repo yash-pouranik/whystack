@@ -7,7 +7,7 @@ const PullRequest = require('../models/PullRequest'); // Added dependency
 // List repositories from GitHub for the authenticated user
 exports.listRepos = async (req, res) => {
     try {
-        const user = await User.findById(req.session.userId);
+        const user = await User.findById(req.userId);
         if (!user) return res.status(401).json({ message: 'Unauthorized' });
 
         // Fetch repos from GitHub
@@ -52,7 +52,7 @@ exports.importRepo = async (req, res) => {
     const { githubRepoId, name, owner, visibility, githubUrl } = req.body;
 
     try {
-        const user = await User.findById(req.session.userId);
+        const user = await User.findById(req.userId);
         if (!user) return res.status(401).json({ message: 'Unauthorized' });
 
         // Check if already exists
@@ -80,7 +80,7 @@ exports.importRepo = async (req, res) => {
 // Get imported projects
 exports.getProjects = async (req, res) => {
     try {
-        const projects = await Project.find({ importedBy: req.session.userId }).sort({ createdAt: -1 });
+        const projects = await Project.find({ importedBy: req.userId }).sort({ createdAt: -1 });
         res.json(projects);
     } catch (error) {
         res.status(500).json({ message: 'Failed to fetch projects' });

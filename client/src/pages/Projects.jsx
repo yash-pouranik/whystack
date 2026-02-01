@@ -101,15 +101,24 @@ function ImportView({ onImport }) {
     }, []);
 
     const fetchRepos = async () => {
-        // This assumes backend proxy or CORS is set. 
-        // If not, use api endpoint for this.
         try {
-            // Direct fetch from backend endpoint I made
-            const res = await fetch('http://localhost:5000/projects/github', { credentials: 'include' });
+            // Fetch repos with JWT token
+            const token = api.getToken();
+            const res = await fetch('/projects/github', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (!res.ok) {
+                throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+            }
+
             const data = await res.json();
             setRepos(data);
         } catch (e) {
             console.error("Failed to load repos", e);
+            alert('Failed to load repositories. Please try logging in again.');
         } finally {
             setLoading(false);
         }
@@ -118,13 +127,15 @@ function ImportView({ onImport }) {
     const handleImport = async (repo) => {
         try {
             await api.importProject({
-                githubRepoId: repo.id,
+                githubRepoId: String(repo.id),
                 name: repo.name,
                 owner: repo.owner,
-                visibility: repo.private ? 'private' : 'public'
+                visibility: repo.private ? 'private' : 'public',
+                githubUrl: repo.url
             });
             onImport();
         } catch (e) {
+            console.error('Import error:', e);
             alert('Import failed');
         }
     }

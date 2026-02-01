@@ -1,6 +1,7 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { cn } from '../utils';
 import { LayoutDashboard, Search, LogOut, Github } from 'lucide-react';
+import { api } from '../services/api';
 
 export default function Layout() {
     const location = useLocation();
@@ -27,7 +28,7 @@ export default function Layout() {
                         <div className="h-8 w-8 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-xs text-zinc-400">
                             YP
                         </div>
-                        <button className="text-zinc-500 hover:text-white transition-colors">
+                        <button onClick={api.logout} className="text-zinc-500 hover:text-white transition-colors">
                             <LogOut size={20} />
                         </button>
                     </div>

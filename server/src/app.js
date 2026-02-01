@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const cookieSession = require('cookie-session');
 const authRoutes = require('./routes/auth.routes');
 const projectRoutes = require('./routes/project.routes');
 const decisionRoutes = require('./routes/decision.routes');
@@ -20,13 +19,6 @@ app.use('/webhooks', express.raw({ type: 'application/json' }));
 // Regular JSON body parser for other routes
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// Session
-app.use(cookieSession({
-    name: 'session',
-    keys: [process.env.SESSION_SECRET || 'secret_key'],
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours
-}));
 
 // Routes
 app.use('/auth', authRoutes);
