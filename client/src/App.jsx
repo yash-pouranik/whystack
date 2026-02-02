@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import WorkspaceLayout from './components/WorkspaceLayout';
 import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login';
+import LandingPage from './pages/LandingPage';
 import AuthCallback from './pages/AuthCallback';
 import Projects from './pages/Projects';
 import ProjectView from './pages/ProjectView'; // Unified View
@@ -13,12 +14,13 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Public routes */}
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
 
         {/* Protected workspace routes */}
         <Route element={<ProtectedRoute><WorkspaceLayout /></ProtectedRoute>}>
-          <Route path="/" element={<Navigate to="/projects" replace />} />
+          {/* <Route path="/" element={<Navigate to="/projects" replace />} /> Remove automatic redirect for now, or move it logic specific */}
           <Route path="/projects" element={<Projects />} />
           {/* New 3-Column Layout Routes */}
           <Route path="/projects/:projectId" element={<ProjectView />} />

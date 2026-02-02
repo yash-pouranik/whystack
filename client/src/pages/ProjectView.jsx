@@ -279,7 +279,7 @@ function EmbeddedDecisionEditor({ pr }) {
                 <div className="max-w-5xl mx-auto space-y-8 pb-32">
 
                     {/* Intro Card */}
-                    <div className="p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 backdrop-blur-md">
+                    <div className="p-6 rounded-2xl bg-[#111]/80 border border-white/10">
                         <div className="flex gap-4">
                             <div className="p-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20 h-fit">
                                 <FileText size={24} className="text-indigo-400" />
@@ -344,15 +344,15 @@ function Section({ icon, label, sublabel, placeholder, value, onChange, rows, co
 
     return (
         <div className={`
-            group relative p-1 rounded-2xl transition-all duration-500
+            group relative p-1 rounded-2xl transition-all duration-300 transform-gpu
             ${value ? 'bg-gradient-to-br from-white/10 to-transparent' : 'bg-transparent'}
         `}>
             <div className={`
-                relative bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/5 rounded-xl p-6 transition-all duration-300
-                ${activeClass} group-hover:shadow-2xl focus-within:shadow-2xl focus-within:bg-[#0a0a0a]
+                relative bg-[#111]/90 border border-white/5 rounded-xl p-6 transition-all duration-200
+                ${activeClass} group-hover:shadow-lg focus-within:shadow-lg focus-within:bg-[#0a0a0a]
             `}>
                 <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 rounded-xl bg-white/5 border border-white/5 group-hover:scale-110 transition-transform duration-300">
+                    <div className="p-3 rounded-xl bg-white/5 border border-white/5 group-hover:scale-105 transition-transform duration-200">
                         {icon}
                     </div>
                     <div className="flex-1">
@@ -371,7 +371,7 @@ function Section({ icon, label, sublabel, placeholder, value, onChange, rows, co
                                 className="w-full bg-transparent border-none p-0 text-base leading-7 text-[var(--text-primary)] placeholder-[var(--text-tertiary)]/30 focus:outline-none resize-none font-light"
                             />
                             {/* Animated Underline */}
-                            <div className={`absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-${color}-500 to-transparent transition-all duration-500 ${value || 'group-focus-within:w-full w-0'}`} />
+                            <div className={`absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-${color}-500 to-transparent transition-all duration-300 ${value || 'group-focus-within:w-full w-0'}`} />
                         </div>
                     </div>
                 </div>

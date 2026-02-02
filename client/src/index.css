@@ -7,32 +7,32 @@
   /* Workspace Color System - 'Midnight Zinc' Premium Theme */
   :root {
     /* Backgrounds */
-    --bg-primary: #09090b;
-    /* Deepest black/zinc */
-    --bg-surface: #121214;
-    /* Slightly lighter (Sidebar) */
-    --bg-elevated: #1e1e22;
-    /* Cards/Editor Surface */
-    --bg-hover: rgba(255, 255, 255, 0.04);
+    --bg-primary: #020617;
+    /* Deep Obsidian */
+    --bg-surface: #0f172a;
+    /* Slate 900 */
+    --bg-elevated: #1e293b;
+    /* Slate 800 */
+    --bg-hover: rgba(255, 255, 255, 0.05);
 
     /* Text */
-    --text-primary: #f5f5f5;
-    /* Near-white */
-    --text-secondary: #9ca3af;
-    /* Muted Gray */
-    --text-tertiary: #52525b;
-    /* Darker Gray */
+    --text-primary: #f8fafc;
+    /* Slate 50 */
+    --text-secondary: #cbd5e1;
+    /* Slate 300 */
+    --text-tertiary: #64748b;
+    /* Slate 500 */
 
     /* Accents */
     --accent-blue: #818cf8;
-    /* Soft Indigo */
+    /* Indigo 400 */
     --accent-pink: #f472b6;
-    /* Soft Pink */
+    /* Pink 400 */
     --accent-primary: var(--accent-blue);
 
     /* Brands */
     --brand-primary: #6366f1;
-    /* Indigo 500 - Sophisticated Violet/Blue */
+    /* Indigo 500 */
     --brand-primary-hover: #4f46e5;
     /* Indigo 600 */
 
@@ -43,8 +43,8 @@
     --link-blue: #60a5fa;
 
     /* Borders */
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-default: rgba(255, 255, 255, 0.12);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-default: rgba(255, 255, 255, 0.1);
   }
 
   * {
@@ -54,15 +54,17 @@
   }
 
   body {
+    background: radial-gradient(circle at 50% -20%, #1e1b4b, #020617);
+    /* Deep Indigo to Black */
     background-color: var(--bg-primary);
+    background-attachment: fixed;
+    min-height: 100vh;
     color: var(--text-primary);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 15px;
-    /* Slightly easier reading size */
     line-height: 1.6;
-    /* Better readability */
   }
 
   /* Remove default button styles */
