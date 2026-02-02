@@ -61,6 +61,15 @@ export const api = {
         return res.json();
     },
 
+    deleteProject: async (projectId) => {
+        const res = await fetch(`${API_URL}/projects/${projectId}`, {
+            method: 'DELETE',
+            headers: getHeaders()
+        });
+        if (!res.ok) throw new Error('Failed to delete project');
+        return res.json();
+    },
+
     // PRs
     getPRs: async (projectId) => {
         const res = await fetch(`${API_URL}/projects/${projectId}/prs`, {

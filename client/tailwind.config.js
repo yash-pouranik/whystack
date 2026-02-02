@@ -6,25 +6,24 @@ export default {
     ],
     theme: {
         extend: {
-            colors: {
-                // Backgrounds (mapping bg-primary to the dark background, NOT brand color)
+            backgroundColor: {
                 primary: 'var(--bg-primary)',
                 surface: 'var(--bg-surface)',
                 elevated: 'var(--bg-elevated)',
                 hover: 'var(--bg-hover)',
-
-                // Brand Colors (Blue)
+            },
+            textColor: {
+                primary: 'var(--text-primary)',
+                secondary: 'var(--text-secondary)',
+                tertiary: 'var(--text-tertiary)',
+                brand: 'var(--brand-primary)',
+            },
+            colors: {
+                // Brand Colors
                 brand: {
-                    DEFAULT: 'var(--brand-primary)', // This is the blue
+                    DEFAULT: 'var(--brand-primary)',
                     hover: 'var(--brand-primary-hover)',
                     text: 'var(--brand-primary)',
-                },
-
-                // Text
-                text: {
-                    primary: 'var(--text-primary)',
-                    secondary: 'var(--text-secondary)',
-                    tertiary: 'var(--text-tertiary)',
                 },
 
                 // Borders

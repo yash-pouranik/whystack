@@ -51,7 +51,7 @@ export default function TopNav() {
     };
 
     return (
-        <nav className="h-16 border-b border-subtle flex items-center justify-between px-6">
+        <nav className="h-16 bg-surface border-b border-subtle flex items-center justify-between px-6 z-50 relative">
             {/* Logo */}
             <Link to="/projects" className="brand-text text-xl font-bold">
                 WhyStack

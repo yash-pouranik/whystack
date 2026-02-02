@@ -4,11 +4,11 @@ import { api } from '../services/api';
 import ThreeColumnLayout from '../components/ThreeColumnLayout';
 import PRListItem from '../components/PRListItem';
 import LoadingSkeleton from '../components/LoadingSkeleton';
-import { FileText, GitBranch, Calendar, User } from 'lucide-react';
+import { FileText, GitBranch, Calendar, User, Target, Brain, Scale, Sparkles, Save, Check, Clock, Link as LinkIcon } from 'lucide-react';
 
 /**
  * ProjectView - The "GitBook" container
- * 
+ *
  * Manages the state for:
  * 1. PR List (Left)
  * 2. Active Selection (Center - DecisionView/Editor)
@@ -36,7 +36,7 @@ export default function ProjectView() {
                 if (found) setActivePR(found);
             } else {
                 // Optional: Select first by default or show "Select a PR" empty state
-                // navigate(\`/projects/\${projectId}/prs/\${prs[0]._id}\`, { replace: true });
+                // navigate(`/projects/${projectId}/prs/${prs[0]._id}`, { replace: true });
             }
         }
     }, [prId, prs]);
@@ -47,8 +47,9 @@ export default function ProjectView() {
             const prData = await api.getPRs(projectId); // This endpoint needs to return PRs
             setPRs(prData);
 
-            // Assume first PR has project populated or fetch project separately
-            if (prData.length > 0 && prData[0].project) {
+            // Verify we have the full project object including owner
+            // If just an ID or partial object, fallback to fetching list
+            if (prData.length > 0 && prData[0].project && prData[0].project.owner) {
                 setProject(prData[0].project);
             } else {
                 const p = await api.getProjects();
@@ -69,8 +70,8 @@ export default function ProjectView() {
     // --- Left Content: PR List ---
     const leftContent = (
         <div className="pb-4">
-            <div className="p-4 border-b border-subtle mb-2">
-                <h2 className="text-sm font-semibold text-primary uppercase tracking-wider">
+            <div className="px-4 py-3 border-b border-white/5 mb-2">
+                <h2 className="text-[10px] font-bold text-[var(--text-tertiary)] uppercase tracking-[0.2em]">
                     Pull Requests
                 </h2>
             </div>
@@ -94,8 +95,6 @@ export default function ProjectView() {
     );
 
     // --- Center Content: Decision Editor/Viewer ---
-    // We'll lazy load the editor here or create a sub-component
-    // For now, let's keep it simple: if selected, render editor, else empty state
     const MainContent = activePR ? (
         <EmbeddedDecisionEditor pr={activePR} />
     ) : (
@@ -108,43 +107,73 @@ export default function ProjectView() {
 
     // --- Right Content: Metadata ---
     const rightContent = activePR ? (
-        <div className="space-y-6">
-            <div className="space-y-1">
-                <h3 className="text-xs uppercase tracking-wider text-tertiary">PR Details</h3>
-                <p className="font-medium text-primary text-sm flex items-center gap-2">
-                    <GitBranch size={14} className="text-secondary" />
-                    #{activePR.githubPrNumber || activePR.number}
-                </p>
-                <a
-                    href={`https://github.com/${project?.owner}/${project?.name}/pull/${activePR.githubPrNumber || activePR.number}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-link hover:underline block truncate"
-                >
-                    View on GitHub
-                </a>
-            </div>
-
-            <div className="space-y-1">
-                <h3 className="text-xs uppercase tracking-wider text-tertiary">Author</h3>
-                <div className="flex items-center gap-2 text-sm text-secondary">
-                    <User size={14} />
-                    {activePR.author}
+        <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-700">
+            {/* PR Details Card */}
+            <div className="p-5 rounded-2xl bg-[#0a0a0a]/50 backdrop-blur-xl border border-white/5 hover:border-indigo-500/30 transition-colors group">
+                <h3 className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-tertiary)] font-bold mb-3 flex items-center gap-2">
+                    <GitBranch size={12} className="text-indigo-400" />
+                    PR Details
+                </h3>
+                <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                        <span className="text-sm font-mono text-[var(--text-secondary)]">ID</span>
+                        <span className="text-sm font-mono text-white bg-white/5 px-2 py-0.5 rounded border border-white/5">
+                            #{activePR.githubPrNumber || activePR.number}
+                        </span>
+                    </div>
+                    <a
+                        href={`https://github.com/${project?.owner}/${project?.name}/pull/${activePR.githubPrNumber || activePR.number}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between p-2 rounded-lg bg-white/5 border border-white/5 hover:bg-indigo-500/10 hover:border-indigo-500/30 transition-all text-xs font-medium text-[var(--text-secondary)] hover:text-indigo-400 group/link"
+                    >
+                        <span>View on GitHub</span>
+                        <LinkIcon size={12} className="opacity-50 group-hover/link:opacity-100" />
+                    </a>
                 </div>
             </div>
 
-            <div className="space-y-1">
-                <h3 className="text-xs uppercase tracking-wider text-tertiary">Timeline</h3>
-                <div className="flex items-center gap-2 text-xs text-secondary">
-                    <Calendar size={14} />
-                    Created {new Date(activePR.githubCreatedAt).toLocaleDateString()}
+            {/* Author Card */}
+            <div className="p-5 rounded-2xl bg-[#0a0a0a]/50 backdrop-blur-xl border border-white/5 hover:border-pink-500/30 transition-colors">
+                <h3 className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-tertiary)] font-bold mb-3 flex items-center gap-2">
+                    <User size={12} className="text-pink-400" />
+                    Author
+                </h3>
+                <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-500/20 to-purple-500/20 border border-pink-500/30 flex items-center justify-center text-xs font-bold text-pink-400">
+                        {activePR.author?.charAt(0).toUpperCase()}
+                    </div>
+                    <span className="text-sm font-medium text-white">{activePR.author}</span>
                 </div>
             </div>
 
-            {/* Future: Version History Dropdown Here */}
-            <div className="pt-6 border-t border-subtle">
-                <h3 className="text-xs uppercase tracking-wider text-tertiary mb-2">History</h3>
-                <p className="text-xs text-secondary italic">Current Version: {activePR.version || 1}</p>
+            {/* Timeline Card */}
+            <div className="p-5 rounded-2xl bg-[#0a0a0a]/50 backdrop-blur-xl border border-white/5 hover:border-amber-500/30 transition-colors">
+                <h3 className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-tertiary)] font-bold mb-3 flex items-center gap-2">
+                    <Clock size={12} className="text-amber-400" />
+                    Timeline
+                </h3>
+                <div className="space-y-2">
+                    <div className="flex items-center gap-3 text-xs text-[var(--text-secondary)]">
+                        <div className="w-1.5 h-1.5 rounded-full bg-amber-500/50" />
+                        <span>Created {new Date(activePR.githubCreatedAt).toLocaleDateString()}</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-xs text-[var(--text-secondary)]">
+                        <div className="w-1.5 h-1.5 rounded-full bg-green-500/50" />
+                        <span>Last Updated Today</span>
+                    </div>
+                </div>
+            </div>
+
+            {/* History (Clean List) */}
+            <div className="pt-4 border-t border-white/5">
+                <h3 className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-tertiary)] font-bold mb-3">
+                    Version History
+                </h3>
+                <div className="px-3 py-2 rounded-lg bg-white/5 border border-white/5 flex items-center justify-between">
+                    <span className="text-xs text-[var(--text-secondary)]">v{activePR.version || 1} (Current)</span>
+                    <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]" />
+                </div>
             </div>
         </div>
     ) : null;
@@ -161,7 +190,6 @@ export default function ProjectView() {
 }
 
 // Sub-component for the editor to isolate state
-import { Save, Check } from 'lucide-react';
 function EmbeddedDecisionEditor({ pr }) {
     const [decision, setDecision] = useState({ what: '', why: '', options: '', tradeoffs: '' });
     const [saving, setSaving] = useState(false);
@@ -204,77 +232,150 @@ function EmbeddedDecisionEditor({ pr }) {
     };
 
     return (
-        <div className="space-y-8 animate-in fade-in duration-300">
-            {/* Header / Title Area */}
-            <div className="border-b border-subtle pb-6 flex items-start justify-between">
-                <div className="max-w-xl">
-                    <h1 className="text-3xl font-bold text-primary mb-2 leading-tight">
-                        {pr.title}
-                    </h1>
-                </div>
+        <div className="flex flex-col h-full bg-[#0a0a0a] relative overflow-hidden animate-in fade-in zoom-in-95 duration-500">
 
-                <button
-                    onClick={handleSave}
-                    disabled={saving}
-                    className={`btn-primary flex items-center gap-2 shadow-lg transition-all ${saved ? 'bg-green-600 hover:bg-green-700' : ''}`}
-                >
-                    {saved ? <Check size={18} /> : <Save size={18} />}
-                    {saved ? 'Saved' : saving ? 'Saving...' : 'Save'}
-                </button>
+            {/* Ambient Background - Grid & Orbs */}
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none mask-image:linear-gradient(to_bottom,transparent,black)" />
+
+            {/* Glowing Orbs */}
+            <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-[20%] -right-[10%] w-[40%] h-[40%] bg-pink-500/10 rounded-full blur-[120px] pointer-events-none" />
+
+            {/* Document Header - Sticky */}
+            <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5 z-20 sticky top-0">
+                <div className="max-w-5xl mx-auto px-8 py-5 flex items-center justify-between">
+                    <div>
+                        <div className="flex items-center gap-2 mb-1">
+                            <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-[10px] font-bold tracking-wider text-indigo-400 uppercase">
+                                <Sparkles size={10} />
+                                Decision Record
+                            </span>
+                            <span className="text-xs font-mono text-[var(--text-tertiary)]">#{pr.githubPrNumber || pr.number}</span>
+                        </div>
+                        <h1 className="text-xl font-bold text-white tracking-tight truncate max-w-xl">
+                            {pr.title}
+                        </h1>
+                    </div>
+
+                    <div>
+                        <button
+                            onClick={handleSave}
+                            disabled={saving}
+                            className={`flex items-center gap-2 px-6 py-2 rounded-lg font-bold text-xs uppercase tracking-wide transition-all duration-300 ${saved
+                                ? 'bg-green-500 text-white shadow-lg shadow-green-500/20'
+                                : 'bg-white text-black hover:bg-indigo-50 hover:text-indigo-600 shadow-lg shadow-white/10 hover:shadow-indigo-500/20'
+                                }`}
+                        >
+                            {saved ? <Check size={14} strokeWidth={3} /> : <Save size={14} strokeWidth={3} />}
+                            {saved ? 'Saved' : saving ? 'Saving...' : 'Save Changes'}
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            {/* Document Body */}
-            <div className="space-y-12">
-                <Section
-                    label="What was decided?"
-                    placeholder="Briefly summarize the architectural decision or change..."
-                    value={decision.what}
-                    onChange={(v) => setDecision(p => ({ ...p, what: v }))}
-                    rows={3}
-                />
-                <Section
-                    label="Why? (Context & Reasoning)"
-                    placeholder="Explain the motivation. Why this approach? Why now?"
-                    value={decision.why}
-                    onChange={(v) => setDecision(p => ({ ...p, why: v }))}
-                    rows={10} // Main writing area
-                    primary
-                />
-                <Section
-                    label="Options Considered"
-                    placeholder="What alternatives did you reject? e.g. 'Option A was too slow...'"
-                    value={decision.options}
-                    onChange={(v) => setDecision(p => ({ ...p, options: v }))}
-                    rows={4}
-                />
-                <Section
-                    label="Tradeoffs"
-                    placeholder="What are the downsides? e.g. 'Adds complexity to build step...'"
-                    value={decision.tradeoffs}
-                    onChange={(v) => setDecision(p => ({ ...p, tradeoffs: v }))}
-                    rows={4}
-                />
+            {/* Document Body - Cards */}
+            <div className="flex-1 overflow-y-auto custom-scrollbar relative z-10 p-8">
+                <div className="max-w-5xl mx-auto space-y-8 pb-32">
+
+                    {/* Intro Card */}
+                    <div className="p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 backdrop-blur-md">
+                        <div className="flex gap-4">
+                            <div className="p-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20 h-fit">
+                                <FileText size={24} className="text-indigo-400" />
+                            </div>
+                            <div>
+                                <h2 className="text-lg font-bold text-white mb-1">Architecture Decision Record</h2>
+                                <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-2xl">
+                                    This document serves as the single source of truth for this architectural change.
+                                    Record the context, decisions, and tradeoffs to ensure long-term maintainability.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <Section
+                        icon={<Target size={24} className="text-cyan-400" />}
+                        label="The Decision"
+                        sublabel="What is changing?"
+                        placeholder="Describe the core decision..."
+                        value={decision.what}
+                        onChange={(v) => setDecision(p => ({ ...p, what: v }))}
+                        rows={4}
+                        color="cyan"
+                    />
+
+                    <Section
+                        icon={<Brain size={24} className="text-pink-400" />}
+                        label="The Reasoning"
+                        sublabel="Why this path?"
+                        placeholder="Explain the motivation, context, and why this is the right move..."
+                        value={decision.why}
+                        onChange={(v) => setDecision(p => ({ ...p, why: v }))}
+                        rows={8}
+                        color="pink"
+                    />
+
+                    <Section
+                        icon={<Scale size={24} className="text-amber-400" />}
+                        label="The Impact"
+                        sublabel="Tradeoffs & Risks"
+                        placeholder="What are the downsides? What alternatives were rejected?"
+                        value={decision.options}
+                        onChange={(v) => setDecision(p => ({ ...p, options: v }))}
+                        rows={6}
+                        color="amber"
+                    />
+                </div>
             </div>
         </div>
     );
 }
 
-function Section({ label, placeholder, value, onChange, rows, primary }) {
+function Section({ icon, label, sublabel, placeholder, value, onChange, rows, color }) {
+    // Dynamic styles based on color prop
+    const colors = {
+        cyan: 'hover:border-cyan-500/50 focus-within:border-cyan-500 shadow-cyan-500/5',
+        pink: 'hover:border-pink-500/50 focus-within:border-pink-500 shadow-pink-500/5',
+        amber: 'hover:border-amber-500/50 focus-within:border-amber-500 shadow-amber-500/5',
+    };
+
+    const activeClass = colors[color] || colors.cyan;
+
     return (
-        <div className="group">
-            <h3 className={`text-sm font-semibold mb-3 ${primary ? 'text-[var(--brand-primary)]' : 'text-secondary'}`}>
-                {label}
-            </h3>
-            <textarea
-                value={value}
-                onChange={(e) => onChange(e.target.value)}
-                placeholder={placeholder}
-                rows={rows}
-                className="w-full bg-transparent border-none p-0 text-lg text-primary placeholder-tertiary focus:outline-none resize-none leading-relaxed"
-                style={{ minHeight: `${rows * 1.5}rem` }}
-            />
-            {/* Subtle focus indicator line */}
-            <div className="h-px bg-subtle mt-2 group-focus-within:bg-[var(--brand-primary)] transition-colors" />
+        <div className={`
+            group relative p-1 rounded-2xl transition-all duration-500
+            ${value ? 'bg-gradient-to-br from-white/10 to-transparent' : 'bg-transparent'}
+        `}>
+            <div className={`
+                relative bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/5 rounded-xl p-6 transition-all duration-300
+                ${activeClass} group-hover:shadow-2xl focus-within:shadow-2xl focus-within:bg-[#0a0a0a]
+            `}>
+                <div className="flex items-start gap-4 mb-4">
+                    <div className="p-3 rounded-xl bg-white/5 border border-white/5 group-hover:scale-110 transition-transform duration-300">
+                        {icon}
+                    </div>
+                    <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-1">
+                            <h3 className="text-base font-bold text-white tracking-wide uppercase">{label}</h3>
+                            <span className="w-1 h-1 rounded-full bg-white/20" />
+                            <span className="text-xs font-mono text-[var(--text-tertiary)] uppercase tracking-wider">{sublabel}</span>
+                        </div>
+
+                        <div className="relative mt-4">
+                            <textarea
+                                value={value}
+                                onChange={(e) => onChange(e.target.value)}
+                                placeholder={placeholder}
+                                rows={rows}
+                                className="w-full bg-transparent border-none p-0 text-base leading-7 text-[var(--text-primary)] placeholder-[var(--text-tertiary)]/30 focus:outline-none resize-none font-light"
+                            />
+                            {/* Animated Underline */}
+                            <div className={`absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-${color}-500 to-transparent transition-all duration-500 ${value || 'group-focus-within:w-full w-0'}`} />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

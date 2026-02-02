@@ -18,7 +18,7 @@ export default function ThreeColumnLayout({
     backLabel = "Back"
 }) {
     return (
-        <div className="flex h-[calc(100vh-64px)] overflow-hidden bg-primary">
+        <div className="flex h-full overflow-hidden">
             {/* Left Sidebar - Navigation / List */}
             <aside className="w-80 border-r border-subtle flex flex-col bg-surface">
                 {onBack && (
@@ -38,12 +38,8 @@ export default function ThreeColumnLayout({
             </aside>
 
             {/* Center - Main Content */}
-            <main className="flex-1 flex flex-col min-w-0 bg-primary">
-                <div className="flex-1 overflow-y-auto px-12 py-8 custom-scrollbar">
-                    <div className="max-w-3xl mx-auto w-full">
-                        {mainContent}
-                    </div>
-                </div>
+            <main className="flex-1 flex flex-col min-w-0 bg-primary overflow-hidden">
+                {mainContent}
             </main>
 
             {/* Right Sidebar - Metadata */}

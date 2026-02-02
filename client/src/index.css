@@ -4,36 +4,47 @@
 
 @layer base {
 
-  /* Workspace Color System - GitBook Style Dark Mode */
+  /* Workspace Color System - 'Midnight Zinc' Premium Theme */
   :root {
     /* Backgrounds */
-    --bg-primary: #141414;
-    /* Slightly lighter than pure black */
-    --bg-surface: #1f1f1f;
-    /* Sidebar/Cards */
-    --bg-elevated: #292929;
-    /* Hovers */
-    --bg-hover: #333333;
+    --bg-primary: #09090b;
+    /* Deepest black/zinc */
+    --bg-surface: #121214;
+    /* Slightly lighter (Sidebar) */
+    --bg-elevated: #1e1e22;
+    /* Cards/Editor Surface */
+    --bg-hover: rgba(255, 255, 255, 0.04);
 
-    /* Text - High Contrast */
-    --text-primary: #ffffff;
-    --text-secondary: #a3a3a3;
-    --text-tertiary: #737373;
+    /* Text */
+    --text-primary: #f5f5f5;
+    /* Near-white */
+    --text-secondary: #9ca3af;
+    /* Muted Gray */
+    --text-tertiary: #52525b;
+    /* Darker Gray */
 
-    /* Brand - GitBook Blue */
-    --brand-primary: #3b82f6;
-    --brand-primary-hover: #2563eb;
+    /* Accents */
+    --accent-blue: #818cf8;
+    /* Soft Indigo */
+    --accent-pink: #f472b6;
+    /* Soft Pink */
+    --accent-primary: var(--accent-blue);
+
+    /* Brands */
+    --brand-primary: #6366f1;
+    /* Indigo 500 - Sophisticated Violet/Blue */
+    --brand-primary-hover: #4f46e5;
+    /* Indigo 600 */
 
     /* Status */
     --status-pending: #fbbf24;
     --status-documented: #34d399;
     --status-risk: #f87171;
     --link-blue: #60a5fa;
-    /* Lighter blue for dark mode text */
 
-    /* Borders - Subtle */
-    --border-subtle: #333333;
-    --border-default: #404040;
+    /* Borders */
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-default: rgba(255, 255, 255, 0.12);
   }
 
   * {

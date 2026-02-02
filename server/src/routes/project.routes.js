@@ -10,5 +10,6 @@ router.get('/github', projectController.listRepos);
 router.post('/import', projectController.importRepo);
 router.get('/', projectController.getProjects);
 router.get('/:projectId/prs', projectController.getProjectPRs);
+router.delete('/:projectId', projectController.deleteProject);
 
 module.exports = router;

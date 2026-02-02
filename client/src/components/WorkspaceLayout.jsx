@@ -1,28 +1,29 @@
 import { Outlet } from 'react-router-dom';
-import TopNav from './TopNav';
+import Sidebar from './Sidebar';
 
 /**
- * WorkspaceLayout - Full-width layout with top nav
+ * WorkspaceLayout - Sidebar + Framed Content
  * 
  * Layout:
- * ┌────────────────────────────────┐
- * │     TopNav (fixed)             │
- * ├────────────────────────────────┤
- * │                                │
- * │     Workspace (full-width)     │
- * │                                │
- * └────────────────────────────────┘
+ * ┌──────┬────────────────────────────┐
+ * │ Side │  ┌──────────────────────┐  │
+ * │ bar  │  │    Main Content      │  │
+ * │      │  │      (Framed)        │  │
+ * │      │  └──────────────────────┘  │
+ * └──────┴────────────────────────────┘
  */
 export default function WorkspaceLayout() {
     return (
-        <div className="h-screen flex flex-col overflow-hidden">
-            {/* Top Navigation */}
-            <TopNav />
+        <div className="h-screen w-full flex bg-primary overflow-hidden">
+            {/* Left Sidebar */}
+            <Sidebar />
 
-            {/* Main Workspace - Full Width */}
-            <main className="flex-1 overflow-y-auto">
-                <Outlet />
-            </main>
+            {/* Main Content Wrapper - Adds the 'padding' effect around the active view */}
+            <div className="flex-1 flex flex-col h-full min-w-0 p-2 pl-0">
+                <main className="flex-1 bg-surface border border-subtle rounded-xl overflow-hidden flex flex-col relative shadow-2xl">
+                    <Outlet />
+                </main>
+            </div>
         </div>
     );
 }

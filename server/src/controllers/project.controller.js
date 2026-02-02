@@ -177,3 +177,44 @@ exports.getProjectPRs = async (req, res) => {
         res.status(500).json({ message: 'Failed to fetch PRs' });
     }
 };
+
+// NEW: Delete Project (Cascading)
+const Decision = require('../models/Decision'); // Ensure this import is present
+
+exports.deleteProject = async (req, res) => {
+    const { projectId } = req.params;
+    try {
+        const user = await User.findById(req.userId);
+        if (!user) return res.status(401).json({ message: 'Unauthorized' });
+
+        // 1. Find Project and verify owner
+        const project = await Project.findById(projectId);
+        if (!project) return res.status(404).json({ message: 'Project not found' });
+
+        if (project.importedBy.toString() !== user._id.toString()) {
+            return res.status(403).json({ message: 'Forbidden: You do not own this project' });
+        }
+
+        // 2. Find associated PRs
+        const prs = await PullRequest.find({ project: projectId });
+        const prIds = prs.map(pr => pr._id);
+
+        // 3. Delete Decisions (Cascade Level 2)
+        if (prIds.length > 0) {
+            const deleteDecisionsResult = await Decision.deleteMany({ pullRequest: { $in: prIds } });
+            console.log(`Deleted ${deleteDecisionsResult.deletedCount} decisions for project ${project.name}`);
+        }
+
+        // 4. Delete PRs (Cascade Level 1)
+        const deletePrsResult = await PullRequest.deleteMany({ project: projectId });
+        console.log(`Deleted ${deletePrsResult.deletedCount} PRs for project ${project.name}`);
+
+        // 5. Delete Project (Root)
+        await Project.findByIdAndDelete(projectId);
+
+        res.json({ message: 'Project and all associated data deleted successfully' });
+    } catch (error) {
+        console.error("Delete Project Error", error);
+        res.status(500).json({ message: 'Failed to delete project' });
+    }
+};
