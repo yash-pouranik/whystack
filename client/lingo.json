@@ -1,0 +1,17 @@
+{
+    "$schema": "https://raw.githubusercontent.com/lingodotdev/lingo.dev/main/packages/cli/src/schema/i18n.json",
+    "locale": {
+        "source": "en",
+        "targets": [
+            "eu",
+            "fr"
+        ]
+    },
+    "buckets": {
+        "react": {
+            "include": [
+                "src/**/*.{jsx,tsx}"
+            ]
+        }
+    }
+}

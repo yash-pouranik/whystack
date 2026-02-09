@@ -1,0 +1,1347 @@
+{
+  "entries": {
+    "c9ad95ee3d7a": {
+      "type": "content",
+      "sourceText": "Completing login...",
+      "context": {
+        "componentName": "AuthCallback",
+        "filePath": "pages/AuthCallback.jsx"
+      },
+      "hash": "c9ad95ee3d7a",
+      "location": {
+        "filePath": "pages/AuthCallback.jsx",
+        "line": 27,
+        "column": 16
+      }
+    },
+    "38ccfb31026c": {
+      "type": "content",
+      "sourceText": "WhyStack",
+      "context": {
+        "componentName": "Login",
+        "filePath": "pages/Login.jsx"
+      },
+      "hash": "38ccfb31026c",
+      "location": {
+        "filePath": "pages/Login.jsx",
+        "line": 34,
+        "column": 20
+      }
+    },
+    "e7f154be498e": {
+      "type": "content",
+      "sourceText": "Capture the context. Document the decision.<br0></br0> Build with clarity.",
+      "context": {
+        "componentName": "Login",
+        "filePath": "pages/Login.jsx"
+      },
+      "hash": "e7f154be498e",
+      "location": {
+        "filePath": "pages/Login.jsx",
+        "line": 37,
+        "column": 20
+      }
+    },
+    "02f129dbba3c": {
+      "type": "content",
+      "sourceText": "Authentication",
+      "context": {
+        "componentName": "Login",
+        "filePath": "pages/Login.jsx"
+      },
+      "hash": "02f129dbba3c",
+      "location": {
+        "filePath": "pages/Login.jsx",
+        "line": 45,
+        "column": 24
+      }
+    },
+    "af8c72bc1956": {
+      "type": "content",
+      "sourceText": "Connect with GitHub",
+      "context": {
+        "componentName": "Login",
+        "filePath": "pages/Login.jsx"
+      },
+      "hash": "af8c72bc1956",
+      "location": {
+        "filePath": "pages/Login.jsx",
+        "line": 56,
+        "column": 28
+      }
+    },
+    "2d3884f12e31": {
+      "type": "content",
+      "sourceText": "<div0><div0></div0></div0> v0.1.0 • System Operational",
+      "context": {
+        "componentName": "Login",
+        "filePath": "pages/Login.jsx"
+      },
+      "hash": "2d3884f12e31",
+      "location": {
+        "filePath": "pages/Login.jsx",
+        "line": 62,
+        "column": 20
+      }
+    },
+    "d932f16f0f53": {
+      "type": "content",
+      "sourceText": "WhyStack",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "d932f16f0f53",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 45,
+        "column": 20
+      }
+    },
+    "d4ce13213769": {
+      "type": "content",
+      "sourceText": "The missing <span0>WHY</span0><br0></br0> behind your pull requests.",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "d4ce13213769",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 48,
+        "column": 16
+      }
+    },
+    "af173d5936e4": {
+      "type": "content",
+      "sourceText": "GitHub tracks code changes. WhyStack preserves the reasoning behind them. Transform pull requests from temporary discussions into permanent architectural decisions.",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "af173d5936e4",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 53,
+        "column": 16
+      }
+    },
+    "e668fb02aec0": {
+      "type": "content",
+      "sourceText": "Go to Projects",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "e668fb02aec0",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 64,
+        "column": 28
+      }
+    },
+    "b9f37dfd0c9c": {
+      "type": "content",
+      "sourceText": "Connect GitHub & Start Tracking",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "b9f37dfd0c9c",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 70,
+        "column": 28
+      }
+    },
+    "75bb07da8fca": {
+      "type": "content",
+      "sourceText": "View Demo",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "75bb07da8fca",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 76,
+        "column": 20
+      }
+    },
+    "40606f0a2174": {
+      "type": "content",
+      "sourceText": "Code Change",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "40606f0a2174",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 82,
+        "column": 20
+      }
+    },
+    "3a71976fe854": {
+      "type": "content",
+      "sourceText": "Pull Request",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "3a71976fe854",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 84,
+        "column": 20
+      }
+    },
+    "1b68f4142234": {
+      "type": "content",
+      "sourceText": "Decision Record",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "1b68f4142234",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 86,
+        "column": 20
+      }
+    },
+    "967bb1945a47": {
+      "type": "content",
+      "sourceText": "The problem isn’t code.<br0></br0>It’s lost context.",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "967bb1945a47",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 94,
+        "column": 24
+      }
+    },
+    "de4e1a2943f1": {
+      "type": "content",
+      "sourceText": "Every day, engineering teams make critical architectural decisions inside Pull Requests. Once the PR is merged, that context is buried.",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "de4e1a2943f1",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 95,
+        "column": 24
+      }
+    },
+    "a08f628813d5": {
+      "type": "content",
+      "sourceText": "WhyStack turns pull requests<br0></br0>into decision memory.",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "a08f628813d5",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 119,
+        "column": 20
+      }
+    },
+    "3564649531f9": {
+      "type": "content",
+      "sourceText": "We attach a structured \"Why\" document to every PR, enforcing documentation before merge. It creates a searchable brain for your codebase.",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "3564649531f9",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 120,
+        "column": 20
+      }
+    },
+    "0cd0cbedd79e": {
+      "type": "content",
+      "sourceText": "Workflow",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "0cd0cbedd79e",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 144,
+        "column": 20
+      }
+    },
+    "41355aeec2c0": {
+      "type": "content",
+      "sourceText": "Built for clarity.",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "41355aeec2c0",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 167,
+        "column": 20
+      }
+    },
+    "12e302af44dc": {
+      "type": "content",
+      "sourceText": "No marketing fluff. Just your projects and their decisions.",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "12e302af44dc",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 168,
+        "column": 20
+      }
+    },
+    "a020fe49892e": {
+      "type": "content",
+      "sourceText": "whystack.bitbros.in/projects/core-api",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "a020fe49892e",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 180,
+        "column": 24
+      }
+    },
+    "77326bafd17d": {
+      "type": "content",
+      "sourceText": "PENDING",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "77326bafd17d",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 197,
+        "column": 40
+      }
+    },
+    "ecc1b1e0beb6": {
+      "type": "content",
+      "sourceText": "PR #1024",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "ecc1b1e0beb6",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 198,
+        "column": 40
+      }
+    },
+    "6cceed426671": {
+      "type": "content",
+      "sourceText": "Migrate Auth Service to PostgreSQL",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "6cceed426671",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 200,
+        "column": 36
+      }
+    },
+    "92a83f2daec5": {
+      "type": "content",
+      "sourceText": "The Why",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "92a83f2daec5",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 204,
+        "column": 32
+      }
+    },
+    "9a5b047105b0": {
+      "type": "content",
+      "sourceText": "Redis was causing data persistence issues during high-load restarts. Moving to Postgres ensures ACID compliance for user sessions while maintaining acceptable latency.",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "9a5b047105b0",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 205,
+        "column": 32
+      }
+    },
+    "34c17a748fe0": {
+      "type": "content",
+      "sourceText": "Who needs WhyStack?",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "34c17a748fe0",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 218,
+        "column": 20
+      }
+    },
+    "7754289980de": {
+      "type": "content",
+      "sourceText": "Why not just use PR descriptions?",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "7754289980de",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 236,
+        "column": 16
+      }
+    },
+    "f46f1c4d7fe3": {
+      "type": "content",
+      "sourceText": "PRs are temporal",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "f46f1c4d7fe3",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 241,
+        "column": 28
+      }
+    },
+    "b62f99fe6bd9": {
+      "type": "content",
+      "sourceText": "They are designed to be merged and forgotten. Searching closed PRs is a friction-heavy process.",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "b62f99fe6bd9",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 242,
+        "column": 28
+      }
+    },
+    "6d55dcc5f204": {
+      "type": "content",
+      "sourceText": "Docs go stale",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "6d55dcc5f204",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 248,
+        "column": 28
+      }
+    },
+    "9cfe3de94f03": {
+      "type": "content",
+      "sourceText": "External documentation (Notion/Confluence) drifts away from the actual code implementation.",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "9cfe3de94f03",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 249,
+        "column": 28
+      }
+    },
+    "93908013a5a2": {
+      "type": "content",
+      "sourceText": "WhyStack is linked",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "93908013a5a2",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 255,
+        "column": 28
+      }
+    },
+    "34d4fe1e4bbc": {
+      "type": "content",
+      "sourceText": "Decisions are tightly coupled to the specific code change event, preserving exact context forever.",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "34d4fe1e4bbc",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 256,
+        "column": 28
+      }
+    },
+    "55ea2a499243": {
+      "type": "content",
+      "sourceText": "Developer First & Open",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "55ea2a499243",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 266,
+        "column": 20
+      }
+    },
+    "7f8a93c86931": {
+      "type": "content",
+      "sourceText": "WhyStack is built by developers for developers. We don't lock you in. Export your decision data to JSON/Markdown at any time.",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "7f8a93c86931",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 267,
+        "column": 20
+      }
+    },
+    "b9bd508a8f77": {
+      "type": "content",
+      "sourceText": "Never lose the <span0>WHY</span0><br0></br0>behind your code again.",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "b9bd508a8f77",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 276,
+        "column": 16
+      }
+    },
+    "e39fc49a43ee": {
+      "type": "content",
+      "sourceText": "View Example Decision Record",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "e39fc49a43ee",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 284,
+        "column": 20
+      }
+    },
+    "bcef200ff74d": {
+      "type": "content",
+      "sourceText": "Privacy",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "bcef200ff74d",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 293,
+        "column": 20
+      }
+    },
+    "8ecc6bf4031b": {
+      "type": "content",
+      "sourceText": "Terms",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "8ecc6bf4031b",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 294,
+        "column": 20
+      }
+    },
+    "31d900ff4a66": {
+      "type": "content",
+      "sourceText": "Docs",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "31d900ff4a66",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 295,
+        "column": 20
+      }
+    },
+    "29081c721fcf": {
+      "type": "content",
+      "sourceText": "GitHub",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "29081c721fcf",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 296,
+        "column": 20
+      }
+    },
+    "1f54752af101": {
+      "type": "content",
+      "sourceText": "© {expression0} WhyStack. System Operational.",
+      "context": {
+        "componentName": "LandingPage",
+        "filePath": "pages/LandingPage.jsx"
+      },
+      "hash": "1f54752af101",
+      "location": {
+        "filePath": "pages/LandingPage.jsx",
+        "line": 298,
+        "column": 16
+      }
+    },
+    "b9445429dfc8": {
+      "type": "content",
+      "sourceText": "WhyStack",
+      "context": {
+        "componentName": "Sidebar",
+        "filePath": "components/Sidebar.jsx"
+      },
+      "hash": "b9445429dfc8",
+      "location": {
+        "filePath": "components/Sidebar.jsx",
+        "line": 86,
+        "column": 24
+      }
+    },
+    "6137e9a060db": {
+      "type": "content",
+      "sourceText": "Import Project",
+      "context": {
+        "componentName": "Sidebar",
+        "filePath": "components/Sidebar.jsx"
+      },
+      "hash": "6137e9a060db",
+      "location": {
+        "filePath": "components/Sidebar.jsx",
+        "line": 141,
+        "column": 28
+      }
+    },
+    "db40e22bca73": {
+      "type": "content",
+      "sourceText": "Platform",
+      "context": {
+        "componentName": "Sidebar",
+        "filePath": "components/Sidebar.jsx"
+      },
+      "hash": "db40e22bca73",
+      "location": {
+        "filePath": "components/Sidebar.jsx",
+        "line": 156,
+        "column": 20
+      }
+    },
+    "941480a956d4": {
+      "type": "attribute",
+      "sourceText": "All Projects",
+      "context": {
+        "attributeName": "label",
+        "componentName": "Sidebar",
+        "filePath": "components/Sidebar.jsx"
+      },
+      "hash": "941480a956d4",
+      "location": {
+        "filePath": "components/Sidebar.jsx",
+        "line": 161,
+        "column": 16
+      }
+    },
+    "2107375d6b48": {
+      "type": "attribute",
+      "sourceText": "Search",
+      "context": {
+        "attributeName": "label",
+        "componentName": "Sidebar",
+        "filePath": "components/Sidebar.jsx"
+      },
+      "hash": "2107375d6b48",
+      "location": {
+        "filePath": "components/Sidebar.jsx",
+        "line": 169,
+        "column": 16
+      }
+    },
+    "619ecc79d918": {
+      "type": "content",
+      "sourceText": "Settings",
+      "context": {
+        "componentName": "Sidebar",
+        "filePath": "components/Sidebar.jsx"
+      },
+      "hash": "619ecc79d918",
+      "location": {
+        "filePath": "components/Sidebar.jsx",
+        "line": 177,
+        "column": 20
+      }
+    },
+    "b01dc2eda89c": {
+      "type": "attribute",
+      "sourceText": "Preferences",
+      "context": {
+        "attributeName": "label",
+        "componentName": "Sidebar",
+        "filePath": "components/Sidebar.jsx"
+      },
+      "hash": "b01dc2eda89c",
+      "location": {
+        "filePath": "components/Sidebar.jsx",
+        "line": 181,
+        "column": 16
+      }
+    },
+    "3f7439ea2161": {
+      "type": "content",
+      "sourceText": "Language",
+      "context": {
+        "componentName": "Sidebar",
+        "filePath": "components/Sidebar.jsx"
+      },
+      "hash": "3f7439ea2161",
+      "location": {
+        "filePath": "components/Sidebar.jsx",
+        "line": 195,
+        "column": 28
+      }
+    },
+    "5caebc866d39": {
+      "type": "content",
+      "sourceText": "English",
+      "context": {
+        "componentName": "Sidebar",
+        "filePath": "components/Sidebar.jsx"
+      },
+      "hash": "5caebc866d39",
+      "location": {
+        "filePath": "components/Sidebar.jsx",
+        "line": 202,
+        "column": 28
+      }
+    },
+    "293f7e4da8c2": {
+      "type": "content",
+      "sourceText": "Euskara",
+      "context": {
+        "componentName": "Sidebar",
+        "filePath": "components/Sidebar.jsx"
+      },
+      "hash": "293f7e4da8c2",
+      "location": {
+        "filePath": "components/Sidebar.jsx",
+        "line": 203,
+        "column": 28
+      }
+    },
+    "c883378e3366": {
+      "type": "content",
+      "sourceText": "Français",
+      "context": {
+        "componentName": "Sidebar",
+        "filePath": "components/Sidebar.jsx"
+      },
+      "hash": "c883378e3366",
+      "location": {
+        "filePath": "components/Sidebar.jsx",
+        "line": 204,
+        "column": 28
+      }
+    },
+    "e080f9cdb81f": {
+      "type": "content",
+      "sourceText": "Collapse",
+      "context": {
+        "componentName": "Sidebar",
+        "filePath": "components/Sidebar.jsx"
+      },
+      "hash": "e080f9cdb81f",
+      "location": {
+        "filePath": "components/Sidebar.jsx",
+        "line": 215,
+        "column": 35
+      }
+    },
+    "a748b37851fe": {
+      "type": "content",
+      "sourceText": "Log Out",
+      "context": {
+        "componentName": "Sidebar",
+        "filePath": "components/Sidebar.jsx"
+      },
+      "hash": "a748b37851fe",
+      "location": {
+        "filePath": "components/Sidebar.jsx",
+        "line": 224,
+        "column": 35
+      }
+    },
+    "63536c8eb4dd": {
+      "type": "content",
+      "sourceText": "Pull Requests",
+      "context": {
+        "componentName": "ProjectView",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "63536c8eb4dd",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 74,
+        "column": 16
+      }
+    },
+    "770394dd715d": {
+      "type": "content",
+      "sourceText": "No pull requests found.",
+      "context": {
+        "componentName": "ProjectView",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "770394dd715d",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 81,
+        "column": 16
+      }
+    },
+    "26bd196fcfde": {
+      "type": "content",
+      "sourceText": "Select a Pull Request",
+      "context": {
+        "componentName": "ProjectView",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "26bd196fcfde",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 103,
+        "column": 12
+      }
+    },
+    "fabeffa16984": {
+      "type": "content",
+      "sourceText": "Choose a PR from the sidebar to view or document its decision.",
+      "context": {
+        "componentName": "ProjectView",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "fabeffa16984",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 104,
+        "column": 12
+      }
+    },
+    "d284073d8484": {
+      "type": "content",
+      "sourceText": "PR Details",
+      "context": {
+        "componentName": "ProjectView",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "d284073d8484",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 113,
+        "column": 16
+      }
+    },
+    "6b53bed16143": {
+      "type": "content",
+      "sourceText": "ID",
+      "context": {
+        "componentName": "ProjectView",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "6b53bed16143",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 119,
+        "column": 24
+      }
+    },
+    "797ac1695a8f": {
+      "type": "content",
+      "sourceText": "'#'{expression0}",
+      "context": {
+        "componentName": "ProjectView",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "797ac1695a8f",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 120,
+        "column": 24
+      }
+    },
+    "40e545c32efb": {
+      "type": "content",
+      "sourceText": "View on GitHub",
+      "context": {
+        "componentName": "ProjectView",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "40e545c32efb",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 130,
+        "column": 24
+      }
+    },
+    "e677184ba398": {
+      "type": "content",
+      "sourceText": "Author",
+      "context": {
+        "componentName": "ProjectView",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "e677184ba398",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 138,
+        "column": 16
+      }
+    },
+    "9764522e1e8c": {
+      "type": "content",
+      "sourceText": "Timeline",
+      "context": {
+        "componentName": "ProjectView",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "9764522e1e8c",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 152,
+        "column": 16
+      }
+    },
+    "d30ff503dfb8": {
+      "type": "content",
+      "sourceText": "Created {expression0}",
+      "context": {
+        "componentName": "ProjectView",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "d30ff503dfb8",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 159,
+        "column": 24
+      }
+    },
+    "6474e7c47d28": {
+      "type": "content",
+      "sourceText": "Last Updated Today",
+      "context": {
+        "componentName": "ProjectView",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "6474e7c47d28",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 163,
+        "column": 24
+      }
+    },
+    "a5e4534485f5": {
+      "type": "content",
+      "sourceText": "Version History",
+      "context": {
+        "componentName": "ProjectView",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "a5e4534485f5",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 170,
+        "column": 16
+      }
+    },
+    "a504cc71e6b4": {
+      "type": "content",
+      "sourceText": "v{expression0} (Current)",
+      "context": {
+        "componentName": "ProjectView",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "a504cc71e6b4",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 174,
+        "column": 20
+      }
+    },
+    "4402450a8667": {
+      "type": "content",
+      "sourceText": "Decision Record",
+      "context": {
+        "componentName": "EmbeddedDecisionEditor",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "4402450a8667",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 250,
+        "column": 28
+      }
+    },
+    "7218abd84482": {
+      "type": "content",
+      "sourceText": "'#'{expression0}",
+      "context": {
+        "componentName": "EmbeddedDecisionEditor",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "7218abd84482",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 254,
+        "column": 28
+      }
+    },
+    "93085066b148": {
+      "type": "content",
+      "sourceText": "Architecture Decision Record",
+      "context": {
+        "componentName": "EmbeddedDecisionEditor",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "93085066b148",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 288,
+        "column": 32
+      }
+    },
+    "a2101244e098": {
+      "type": "content",
+      "sourceText": "This document serves as the single source of truth for this architectural change. Record the context, decisions, and tradeoffs to ensure long-term maintainability.",
+      "context": {
+        "componentName": "EmbeddedDecisionEditor",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "a2101244e098",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 289,
+        "column": 32
+      }
+    },
+    "ea85197cbbb9": {
+      "type": "attribute",
+      "sourceText": "The Decision",
+      "context": {
+        "attributeName": "label",
+        "componentName": "EmbeddedDecisionEditor",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "ea85197cbbb9",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 297,
+        "column": 20
+      }
+    },
+    "58e0e5a299af": {
+      "type": "attribute",
+      "sourceText": "Describe the core decision...",
+      "context": {
+        "attributeName": "placeholder",
+        "componentName": "EmbeddedDecisionEditor",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "58e0e5a299af",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 297,
+        "column": 20
+      }
+    },
+    "8b4fdad09ea9": {
+      "type": "attribute",
+      "sourceText": "The Reasoning",
+      "context": {
+        "attributeName": "label",
+        "componentName": "EmbeddedDecisionEditor",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "8b4fdad09ea9",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 308,
+        "column": 20
+      }
+    },
+    "3f07588d947c": {
+      "type": "attribute",
+      "sourceText": "Explain the motivation, context, and why this is the right move...",
+      "context": {
+        "attributeName": "placeholder",
+        "componentName": "EmbeddedDecisionEditor",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "3f07588d947c",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 308,
+        "column": 20
+      }
+    },
+    "50bfa3e1a057": {
+      "type": "attribute",
+      "sourceText": "The Impact",
+      "context": {
+        "attributeName": "label",
+        "componentName": "EmbeddedDecisionEditor",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "50bfa3e1a057",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 319,
+        "column": 20
+      }
+    },
+    "b6b26bfd6e2c": {
+      "type": "attribute",
+      "sourceText": "What are the downsides? What alternatives were rejected?",
+      "context": {
+        "attributeName": "placeholder",
+        "componentName": "EmbeddedDecisionEditor",
+        "filePath": "pages/ProjectView.jsx"
+      },
+      "hash": "b6b26bfd6e2c",
+      "location": {
+        "filePath": "pages/ProjectView.jsx",
+        "line": 319,
+        "column": 20
+      }
+    },
+    "91ebd2ea3eb3": {
+      "type": "content",
+      "sourceText": "'#'{expression0}",
+      "context": {
+        "componentName": "PRListItem",
+        "filePath": "components/PRListItem.jsx"
+      },
+      "hash": "91ebd2ea3eb3",
+      "location": {
+        "filePath": "components/PRListItem.jsx",
+        "line": 32,
+        "column": 24
+      }
+    },
+    "e106767ae553": {
+      "type": "content",
+      "sourceText": "•",
+      "context": {
+        "componentName": "PRListItem",
+        "filePath": "components/PRListItem.jsx"
+      },
+      "hash": "e106767ae553",
+      "location": {
+        "filePath": "components/PRListItem.jsx",
+        "line": 35,
+        "column": 24
+      }
+    },
+    "84b359c58177": {
+      "type": "content",
+      "sourceText": "Import Repository",
+      "context": {
+        "componentName": "Projects",
+        "filePath": "pages/Projects.jsx"
+      },
+      "hash": "84b359c58177",
+      "location": {
+        "filePath": "pages/Projects.jsx",
+        "line": 83,
+        "column": 24
+      }
+    },
+    "239a2fcf609f": {
+      "type": "content",
+      "sourceText": "Select a GitHub repository to track decisions",
+      "context": {
+        "componentName": "Projects",
+        "filePath": "pages/Projects.jsx"
+      },
+      "hash": "239a2fcf609f",
+      "location": {
+        "filePath": "pages/Projects.jsx",
+        "line": 86,
+        "column": 24
+      }
+    },
+    "eb5a69909022": {
+      "type": "content",
+      "sourceText": "Cancel",
+      "context": {
+        "componentName": "Projects",
+        "filePath": "pages/Projects.jsx"
+      },
+      "hash": "eb5a69909022",
+      "location": {
+        "filePath": "pages/Projects.jsx",
+        "line": 90,
+        "column": 20
+      }
+    },
+    "2e6830210abe": {
+      "type": "content",
+      "sourceText": "Track Decision Context",
+      "context": {
+        "componentName": "Projects",
+        "filePath": "pages/Projects.jsx"
+      },
+      "hash": "2e6830210abe",
+      "location": {
+        "filePath": "pages/Projects.jsx",
+        "line": 158,
+        "column": 24
+      }
+    },
+    "4d06b384651d": {
+      "type": "content",
+      "sourceText": "Document the \"why\" behind your pull requests. Never lose context in Slack threads again.",
+      "context": {
+        "componentName": "Projects",
+        "filePath": "pages/Projects.jsx"
+      },
+      "hash": "4d06b384651d",
+      "location": {
+        "filePath": "pages/Projects.jsx",
+        "line": 161,
+        "column": 24
+      }
+    },
+    "8a72728974ad": {
+      "type": "content",
+      "sourceText": "Import Your First Repository",
+      "context": {
+        "componentName": "Projects",
+        "filePath": "pages/Projects.jsx"
+      },
+      "hash": "8a72728974ad",
+      "location": {
+        "filePath": "pages/Projects.jsx",
+        "line": 166,
+        "column": 20
+      }
+    },
+    "9c2786db85d2": {
+      "type": "content",
+      "sourceText": "Tracked Repositories",
+      "context": {
+        "componentName": "Projects",
+        "filePath": "pages/Projects.jsx"
+      },
+      "hash": "9c2786db85d2",
+      "location": {
+        "filePath": "pages/Projects.jsx",
+        "line": 182,
+        "column": 16
+      }
+    },
+    "38ebf3c3fc30": {
+      "type": "content",
+      "sourceText": "WhyStack watches pull requests to capture decisions.",
+      "context": {
+        "componentName": "Projects",
+        "filePath": "pages/Projects.jsx"
+      },
+      "hash": "38ebf3c3fc30",
+      "location": {
+        "filePath": "pages/Projects.jsx",
+        "line": 185,
+        "column": 16
+      }
+    },
+    "df5912eb17a0": {
+      "type": "content",
+      "sourceText": "Repository",
+      "context": {
+        "componentName": "Projects",
+        "filePath": "pages/Projects.jsx"
+      },
+      "hash": "df5912eb17a0",
+      "location": {
+        "filePath": "pages/Projects.jsx",
+        "line": 192,
+        "column": 16
+      }
+    },
+    "c8ed3bc28b9a": {
+      "type": "content",
+      "sourceText": "Last Activity",
+      "context": {
+        "componentName": "Projects",
+        "filePath": "pages/Projects.jsx"
+      },
+      "hash": "c8ed3bc28b9a",
+      "location": {
+        "filePath": "pages/Projects.jsx",
+        "line": 193,
+        "column": 16
+      }
+    },
+    "7ac93f774124": {
+      "type": "content",
+      "sourceText": "+ Import another repository",
+      "context": {
+        "componentName": "Projects",
+        "filePath": "pages/Projects.jsx"
+      },
+      "hash": "7ac93f774124",
+      "location": {
+        "filePath": "pages/Projects.jsx",
+        "line": 246,
+        "column": 16
+      }
+    }
+  },
+  "stats": {
+    "totalEntries": 95,
+    "lastUpdated": "2026-02-09T13:34:25.442Z"
+  }
+}

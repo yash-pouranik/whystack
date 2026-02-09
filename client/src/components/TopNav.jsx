@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { api } from '../services/api';
 import { ChevronDown, Plus, LogOut } from 'lucide-react';
+import { useLingoContext } from '@lingo.dev/compiler/react';
 
 /**
  * TopNav - GitHub-inspired navigation
@@ -12,6 +13,7 @@ import { ChevronDown, Plus, LogOut } from 'lucide-react';
  * - Import + Logout (right)
  */
 export default function TopNav() {
+    const { locale, setLocale } = useLingoContext();
     const [projects, setProjects] = useState([]);
     const [selectedProject, setSelectedProject] = useState(null);
     const [showDropdown, setShowDropdown] = useState(false);
@@ -108,6 +110,16 @@ export default function TopNav() {
 
             {/* Actions */}
             <div className="flex items-center gap-3">
+                <select
+                    value={locale}
+                    onChange={(e) => setLocale(e.target.value)}
+                    className="bg-elevated text-primary text-sm rounded px-2 py-1 border border-subtle focus:outline-none focus:ring-1 focus:ring-primary h-8"
+                >
+                    <option value="en">English</option>
+                    <option value="eu">Euskara</option>
+                    <option value="fr">Français</option>
+                </select>
+
                 <button
                     onClick={() => navigate('/projects?import=true')}
                     className="btn-primary flex items-center gap-2"

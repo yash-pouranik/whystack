@@ -12,10 +12,13 @@ import {
     Layers,
     PanelLeftClose,
     PanelLeftOpen,
-    Trash2
+    Trash2,
+    Globe
 } from 'lucide-react';
+import { useLingoContext } from '@lingo.dev/compiler/react';
 
 export default function Sidebar() {
+    const { locale, setLocale } = useLingoContext();
     const [projects, setProjects] = useState([]);
     const [selectedProject, setSelectedProject] = useState(null);
     const [showProjectMenu, setShowProjectMenu] = useState(false);
@@ -185,6 +188,24 @@ export default function Sidebar() {
 
             {/* Footer / Toggle */}
             <div className="p-3 border-t border-white/5 space-y-1">
+                {!collapsed && (
+                    <div className="mb-2 px-2">
+                        <div className="flex items-center gap-2 text-secondary mb-1">
+                            <Globe size={14} />
+                            <span className="text-xs font-medium uppercase tracking-wider">Language</span>
+                        </div>
+                        <select
+                            value={locale}
+                            onChange={(e) => setLocale(e.target.value)}
+                            className="w-full bg-[#2A2B30] border border-[#3E4045] rounded-md px-2 py-1.5 text-sm text-primary focus:outline-none focus:border-blue-500 transition-colors"
+                        >
+                            <option value="en">English</option>
+                            <option value="eu">Euskara</option>
+                            <option value="fr">Français</option>
+                        </select>
+                    </div>
+                )}
+
                 <button
                     onClick={() => setCollapsed(!collapsed)}
                     className={`w-full flex items-center p-2 rounded-md hover:bg-white/5 text-secondary hover:text-primary transition-colors ${collapsed ? 'justify-center' : 'gap-3'
